@@ -1,0 +1,773 @@
+:root {
+    --black: #070709;
+    --dark: #0e0d11;
+    --dark-red: #26090d;
+    --red: #a7192d;
+    --bright-red: #e52b45;
+    --blood: #ff3b4f;
+    --white: #f4f0ed;
+    --gray: #aaa4a3;
+    --gold: #c9a86a;
+    --card: rgba(24, 20, 23, .78);
+    --border: rgba(255, 255, 255, .09);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(circle at 80% 10%, rgba(167, 25, 45, .15), transparent 30%),
+        var(--black);
+    color: var(--white);
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(5, 5, 7, .72);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+nav {
+    max-width: 1200px;
+    height: 72px;
+    margin: auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: "Cinzel", serif;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--white);
+    font-size: 18px;
+}
+
+.logo span {
+    color: var(--bright-red);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #c9c4c3;
+    text-decoration: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--bright-red);
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    background: #050507;
+}
+
+/* FOTO DA ARLECCHINO */
+.hero-image {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("assets/1359195.png");
+    background-size: cover;
+    background-position: 72% center;
+
+    z-index: 0;
+
+    filter: saturate(.9) contrast(1.05);
+}
+
+/* FADE ESCURO SOBRE A FOTO */
+.hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #050507 0%,
+            rgba(5,5,7,.98) 12%,
+            rgba(5,5,7,.90) 28%,
+            rgba(5,5,7,.60) 48%,
+            rgba(5,5,7,.15) 75%,
+            rgba(5,5,7,.55) 100%
+        ),
+
+        linear-gradient(
+            0deg,
+            #050507 0%,
+            transparent 30%,
+            rgba(5,5,7,.25) 100%
+        );
+}
+
+/* VERMELHO BEM SUTIL NO FUNDO */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background:
+        radial-gradient(
+            circle at 75% 55%,
+            rgba(180, 15, 40, .20),
+            transparent 32%
+        );
+}
+
+.hero-content {
+    width: min(1200px, 90%);
+    margin: auto;
+
+    position: relative;
+    z-index: 3;
+}
+
+
+.eyebrow {
+    color: var(--bright-red);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(60px, 10vw, 135px);
+    line-height: .85;
+    text-transform: uppercase;
+    letter-spacing: -5px;
+    max-width: 800px;
+}
+
+.hero h1 span {
+    color: var(--bright-red);
+    text-shadow: 0 0 40px rgba(229,43,69,.25);
+}
+
+.subtitle {
+    margin-top: 30px;
+    max-width: 600px;
+    color: #c1bcbc;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn {
+    padding: 14px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--bright-red);
+    color: white;
+    box-shadow: 0 0 30px rgba(229,43,69,.18);
+}
+
+.btn-primary:hover {
+    background: #ff4057;
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,.2);
+    color: white;
+}
+
+.btn-outline:hover {
+    border-color: var(--bright-red);
+    color: var(--bright-red);
+}
+
+.hero-symbol {
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 390px;
+    height: 390px;
+    border: 1px solid rgba(229,43,69,.25);
+    border-radius: 50%;
+    animation: rotate 25s linear infinite;
+}
+
+.hero-symbol::before,
+.hero-symbol::after {
+    content: "";
+    position: absolute;
+    inset: 35px;
+    border: 1px solid rgba(229,43,69,.25);
+    transform: rotate(45deg);
+}
+
+.hero-symbol::after {
+    inset: 85px;
+    border-color: rgba(255,255,255,.08);
+    transform: rotate(90deg);
+}
+
+@keyframes rotate {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* ================= SECTIONS ================= */
+
+section {
+    padding: 110px 20px;
+    position: relative;
+}
+
+.container {
+    width: min(1100px, 100%);
+    margin: auto;
+}
+
+.section-title {
+    margin-bottom: 60px;
+}
+
+.section-title small {
+    color: var(--bright-red);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.section-title h2 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(35px, 5vw, 60px);
+    margin-top: 10px;
+}
+
+.section-title p {
+    color: var(--gray);
+    max-width: 650px;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+/* ================= ABOUT ================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.about-text p {
+    color: #b9b4b4;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+.quote {
+    margin-top: 30px;
+    padding: 25px;
+    border-left: 3px solid var(--bright-red);
+    background: rgba(255,255,255,.025);
+    font-family: "Cinzel", serif;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.profile-card {
+    min-height: 420px;
+    padding: 35px;
+    background:
+        linear-gradient(145deg, rgba(167,25,45,.15), transparent 50%),
+        var(--card);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: "arlecchino";
+    position: absolute;
+    right: -50px;
+    bottom: 185px;
+    font-family: "Cinzel", serif;
+    font-size: 70px;
+    color: rgba(255,255,255,.025);
+    transform: rotate(-90deg);
+}
+
+.profile-list {
+    list-style: none;
+}
+
+.profile-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 20px;
+}
+
+.profile-list span:first-child {
+    color: #777;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.profile-list span:last-child {
+    color: #eee;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(var(--bright-red), transparent);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 50px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 8px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--bright-red);
+    background: var(--black);
+    transform: rotate(45deg);
+}
+
+.timeline-item h3 {
+    font-family: "Cinzel", serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.timeline-item .year {
+    color: var(--bright-red);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.timeline-item p {
+    color: var(--gray);
+    line-height: 1.8;
+}
+
+/* ================= KIT ================= */
+
+.kit {
+    background:
+        linear-gradient(rgba(7,7,9,.9), rgba(7,7,9,.96)),
+        radial-gradient(circle at 50% 0%, rgba(167,25,45,.15), transparent 50%);
+}
+
+.kit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 30px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.skill-card:hover {
+    border-color: rgba(229,43,69,.5);
+    transform: translateY(-5px);
+    background: rgba(40, 20, 25, .8);
+}
+
+.skill-icon {
+    width: 55px;
+    height: 55px;
+    border: 1px solid rgba(229,43,69,.4);
+    display: grid;
+    place-items: center;
+    color: var(--bright-red);
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.skill-card h3 {
+    font-family: "Cinzel", serif;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.skill-card p {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.skill-tag {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 5px 9px;
+    border: 1px solid rgba(255,255,255,.1);
+    color: #999;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* ================= MECHANIC ================= */
+
+.mechanic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.bond {
+    height: 300px;
+    width: 300px;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid rgba(229,43,69,.4);
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.bond::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px dashed rgba(229,43,69,.4);
+    animation: rotate 12s linear infinite;
+}
+
+.bond-center {
+    text-align: center;
+    z-index: 2;
+}
+
+.bond-center strong {
+    display: block;
+    font-family: "Cinzel", serif;
+    font-size: 50px;
+    color: var(--bright-red);
+}
+
+.bond-center span {
+    color: #999;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.mechanic-text h3 {
+    font-family: "Cinzel", serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.mechanic-text p {
+    color: var(--gray);
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+/* ================= CURIOSITIES ================= */
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.fact {
+    min-height: 210px;
+    padding: 28px;
+    background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.01));
+    border: 1px solid var(--border);
+    transition: .3s;
+}
+
+.fact:hover {
+    border-color: rgba(229,43,69,.45);
+}
+
+.fact-number {
+    color: var(--bright-red);
+    font-family: "Cinzel", serif;
+    font-size: 30px;
+}
+
+.fact h3 {
+    margin: 20px 0 10px;
+    font-size: 17px;
+}
+
+.fact p {
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ================= QUOTE ================= */
+
+.quote-section {
+    text-align: center;
+    padding: 150px 20px;
+    background:
+        radial-gradient(circle at center, rgba(167,25,45,.15), transparent 45%);
+}
+
+.big-quote {
+    max-width: 850px;
+    margin: auto;
+    font-family: "Cinzel", serif;
+    font-size: clamp(25px, 4vw, 45px);
+    line-height: 1.5;
+}
+
+.quote-author {
+    color: var(--bright-red);
+    margin-top: 25px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 50px 20px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+}
+
+footer strong {
+    color: #aaa;
+}
+
+/* ================= ANIMATIONS ================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blood-particle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: var(--bright-red);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: .45;
+    z-index: -1;
+    animation: fall linear forwards;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.gallery-item {
+    height: 360px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,.08);
+    background: #111;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s ease, filter .7s ease;
+    filter: grayscale(15%);
+}
+
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 50%,
+            rgba(5,5,7,.65)
+        );
+
+    pointer-events: none;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+    filter: grayscale(0%);
+}
+
+
+@keyframes fall {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .5;
+    }
+
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 800px) {
+    .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        background: rgba(7,7,9,.97);
+        flex-direction: column;
+        display: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero-symbol {
+        opacity: .15;
+        width: 300px;
+        height: 300px;
+        right: -80px;
+    }
+
+    .about-grid,
+    .mechanic {
+        grid-template-columns: 1fr;
+    }
+
+    .kit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .facts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 80px 20px;
+    }
+}
